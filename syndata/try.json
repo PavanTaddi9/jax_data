@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Introduction to JAX",
+    "concepts": [
+      "JAX is a NumPy-like library for numerical computation.",
+      "JAX supports automatic differentiation and JIT compilation.",
+      "JAX aims to enable high-performance machine learning research.",
+      "JAX provides a unified interface for CPU, GPU, and TPU.",
+      "JAX includes built-in Just-In-Time (JIT) compilation via Open XLA.",
+      "JAX functions can be automatically vectorized."
+    ],
+    "code_examples": [
+      {
+        "description": "Installing JAX for CPU",
+        "code": "pip\ninstall\njax"
+      },
+      {
+        "description": "Installing JAX for NVIDIA GPU",
+        "code": "pip\ninstall\n-\nU\n\"jax[cuda12]\""
+      },
+      {
+        "description": "Importing jax.numpy as jnp",
+        "code": "import\njax.numpy\nas\njnp"
+      }
+    ]
+  }
+]

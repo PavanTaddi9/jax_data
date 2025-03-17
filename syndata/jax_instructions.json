@@ -1,0 +1,93 @@
+[
+  {
+    "query": "Install JAX with GPU support for CUDA version 11. Replace 'cuda12' with 'cuda11' if necessary, and verify the installation by checking if JAX is using the GPU.",
+    "concepts": [
+      "installation",
+      "GPU",
+      "cuda"
+    ]
+  },
+  {
+    "query": "Write a JAX function that calculates the element-wise exponential of a JAX array, then jit-compile it for faster execution.",
+    "concepts": [
+      "jax.numpy.exp",
+      "jax.jit",
+      "array operations"
+    ]
+  },
+  {
+    "query": "Debug the following JAX code snippet. Identify and correct any errors related to shape mismatches or incorrect data types in a matrix multiplication operation. python\nimport jax.numpy as jnp\nfrom jax import random\n\nkey = random.PRNGKey(0)\na = random.normal(key, (10, 5))\nb = random.normal(key, (3, 10))\nc = jnp.dot(a, b)\nprint(c.shape)",
+    "concepts": [
+      "debugging",
+      "shape",
+      "jax.numpy.dot"
+    ]
+  },
+  {
+    "query": "Explain the benefits of using JIT compilation in JAX for numerical computations, and provide a simple example demonstrating its impact on performance.",
+    "concepts": [
+      "jax.jit",
+      "performance",
+      "compilation"
+    ]
+  },
+  {
+    "query": "Optimize a JAX function that performs a large matrix multiplication. Consider using `jax.jit` and explore data type optimizations (e.g., float32 vs. float64) to improve performance.",
+    "concepts": [
+      "jax.jit",
+      "optimization",
+      "matrix multiplication"
+    ]
+  },
+  {
+    "query": "Using `jax.grad`, compute the gradient of the function `f(x) = x^3 + 2x^2 - 5x + 1` at x = 2.",
+    "concepts": [
+      "jax.grad",
+      "automatic differentiation"
+    ]
+  },
+  {
+    "query": "How does JAX handle automatic vectorization? Explain the concept and provide an example of using `jax.vmap` to vectorize a function.",
+    "concepts": [
+      "jax.vmap",
+      "vectorization"
+    ]
+  },
+  {
+    "query": "Implement a function that computes the mean of a JAX array along a specified axis using `jax.numpy.mean`. Demonstrate its usage with a 2D array.",
+    "concepts": [
+      "jax.numpy.mean",
+      "array operations"
+    ]
+  },
+  {
+    "query": "You encounter a `TypeError` when trying to apply `jax.jit` to a function. What are the common causes of this error, and how can you resolve them?",
+    "concepts": [
+      "jax.jit",
+      "debugging",
+      "TypeError"
+    ]
+  },
+  {
+    "query": "Rewrite the following code using JAX to perform the same operation with JIT compilation, aiming for improved performance: python\nimport numpy as np\n\ndef slow_function(x):\n  return np.sum(x**2)\n\nx = np.random.rand(1000000)\nresult = slow_function(x)",
+    "concepts": [
+      "jax.jit",
+      "NumPy",
+      "performance"
+    ]
+  },
+  {
+    "query": "Explain the purpose of `jax.random.PRNGKey` and demonstrate how to use it to generate random numbers in JAX.  Why is explicit key management important in JAX?",
+    "concepts": [
+      "jax.random.PRNGKey",
+      "random number generation"
+    ]
+  },
+  {
+    "query": "Explore the documentation for `jax.lax.scan` and write a simple example that uses it to compute the cumulative sum of a JAX array.",
+    "concepts": [
+      "jax.lax.scan",
+      "API Usage"
+    ]
+  }
+]
