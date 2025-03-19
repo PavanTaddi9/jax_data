@@ -1,0 +1,22 @@
+[
+  {
+    "query": "Modify the JAX installation command for NVIDIA GPU to handle potential network errors during package downloads by adding a retry mechanism using shell scripting.",
+    "concepts": [
+      "JAX supports automatic differentiation and JIT compilation"
+    ]
+  },
+  {
+    "query": "Implement a simple JIT-compiled function using `jax.numpy` to calculate the element-wise square of a large array (size 10000). Compare the execution time with and without JIT compilation using `timeit` to demonstrate performance optimization.",
+    "concepts": [
+      "JAX aims to enable high-performance machine learning research",
+      "JAX supports automatic differentiation and JIT compilation"
+    ]
+  },
+  {
+    "query": "Create a function that calculates the gradient of the element-wise square of a `jax.numpy` array using `jax.grad`. Ensure the function handles potential `NaN` values in the input array by replacing them with 0 before calculating the gradient. ",
+    "concepts": [
+      "JAX supports automatic differentiation and JIT compilation",
+      "JAX is a NumPy-like library for numerical computation"
+    ]
+  }
+]

@@ -51,52 +51,55 @@ class JAXInstructionGenerator:
         }
   
     
-    def _create_instruction_prompt(self, data: JAXPromptInput) -> str:
-        return f"""You are expert in generating high-quality, diverse natural language instructions for JAX code generation.
+    def _create_instruction_prompt(self,data: JAXPromptInput) -> str:
+        return f"""**JAX Code Generation Skill Builder**
 
-### Input
-**Title**: {data.title}
-**Concepts**:
-{chr(10).join(f"- {c}" for c in data.concepts)}
-**Code Examples**:
-{chr(10).join(f"- {ce.description}:\\n{ce.code.replace('\\n', ' ')}" for ce in data.code_examples)}
+    ### Input Components
+    {chr(10).join(
+    f"**{i+1}. {concept}**{chr(10)}{ex.description}{chr(10)}{ex.code}"
+    for i, (concept, ex) in enumerate(zip(data.concepts, data.code_examples))
+)}
 
-### Task
-Generate 10-15 diverse instructions for JAX coding tasks with type distribution:
-1. Code Implementation Tasks (40-60%):
-   - Direct code creation challenges
-   - Algorithm implementations
-   - Function/module development
+    ### Core Task
+    Create 1-5 instructions per concept that:
+    1. Directly utilize at least one code example
+    2. Combine with 1-2 related concepts
+    3. Target specific skill development areas:
+    - Syntax precision
+    - Error pattern resolution
+    - Performance optimization
+    - API integration
 
-2. Debugging Challenges (20-25%):
-   - Identify/fix performance issues
-   - Resolve API misuse errors
-   - Fix parallelization bugs
+    ### Generation Rules
+    1. Required Elements per Instruction:
+    - Primary concept from input list
+    - Secondary concept (optional)
+    - Base code example reference
+    - Specific technical constraint
 
-3. Conceptual Explanations with Code (15-20%):
-   - Explain JAX concepts with examples
-   - Compare different approaches
-   - Demonstrate paradigm differences
+    2. Example Utilization:
+    - Modify/extend existing examples
+    - Add error handling to examples
+    - Combine multiple examples
+    - Optimize example implementations
 
-4. Performance Optimization (15-20%):
-   - Vectorization tasks
-   - JIT compilation improvements
-   - Memory optimization challenges
-
-5. API Usage Scenarios (5-10%):
-   - Version-specific features
-   - Hardware acceleration usage
-   - Distributed computing patterns
-```json
-{{
-  "instructions": [
+    ### Output Format
+    ```json
     {{
-      "query": "Create a JAX function that...",
-      "concepts": ["jax.jit", "array operations"]
+    "instructions": [
+        {{
+        "query": "Modify [Example X] to implement [Concept A] while [Technical Constraint]",
+        "concepts": ["Concept A", "Concept B"],
+        "base_examples": ["Example X"]
+        }},
+        {{
+        "query": "Fix [Error Type] in [Example Y] using [Concept C] approach",
+        "concepts": ["Concept C"],
+        "base_examples": ["Example Y"]
+        }}
+    ]
     }}
-  ]
-}}
-```"""
+    ```"""
 
     def generate_instructions(self, input_data: JAXPromptInput) -> List[InstructionQuery]:
         try:
@@ -126,6 +129,7 @@ Generate 10-15 diverse instructions for JAX coding tasks with type distribution:
                         validated = JAXPromptInput(**item)
                         instructions = self.generate_instructions(validated)
                         all_instructions.extend([inst.model_dump() for inst in instructions])
+                        print(f"processed line {idx}")
                         
                         status_log.append(ProcessingStatus(
                             item_id=idx,
@@ -177,7 +181,7 @@ if __name__ == "__main__":
         generator = JAXInstructionGenerator()
         
         input_path = Path("jax_doc.json")
-        output_path = Path("jax_instructions.json")
+        output_path = Path("jax_M_instructions.json")
         
         if input_path.exists():
             generator.batch_generate(input_path, output_path)
