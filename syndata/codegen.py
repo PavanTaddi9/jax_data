@@ -16,7 +16,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 load_dotenv()
 
 # --- Configuration ---
-TEMP_API_KEY = os.getenv("GOOGLE_API_KEY", "AIzaSyBo2NcQbGXHum7ZcV3dA4ob9L4fnlQAPe0")
+TEMP_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 TEMPERATURE = 0.7
 
 class TestCase(BaseModel):
